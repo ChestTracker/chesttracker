@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ChestTracker – chest counter and treasure odds</title>
+<meta name="description" content="ChestTracker counts every chest you open or destroy, shows your real odds for every treasure, and predicts your next match. Windows app, in-game overlay.">
+<link rel="icon" href="icon.png">
+<style>
+  :root { --bg:#0b0d12; --panel:#141822; --line:#232838; --text:#e8eaf0; --muted:#8d93a5; --gold:#f2b84b; --purple:#b48cff; --green:#6ee096; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  .wrap { max-width:980px; margin:0 auto; padding:0 16px; }
+  header { padding:22px 0; display:flex; align-items:center; gap:12px; }
+  header img { width:40px; height:40px; }
+  header b { font-size:20px; }
+  header .lang { margin-left:auto; color:var(--muted); cursor:pointer; font-size:14px; }
+  .hero { padding:48px 0 36px; text-align:center; }
+  .hero h1 { font-size:clamp(30px, 5vw, 48px); line-height:1.1; margin:0 0 14px; }
+  .hero h1 span { color:var(--gold); }
+  .hero p { color:var(--muted); font-size:18px; max-width:620px; margin:0 auto 26px; }
+  .buy { display:inline-block; background:linear-gradient(135deg, #7c5cff, #b48cff); color:#fff; text-decoration:none; font-weight:700; padding:15px 32px; border-radius:12px; font-size:18px; }
+  .buy[aria-disabled="true"] { opacity:.5; pointer-events:none; }
+  .price { color:var(--muted); margin-top:12px; font-size:14px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:14px; margin:36px 0; }
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:20px; }
+  .card h3 { margin:0 0 6px; font-size:17px; }
+  .card p { margin:0; color:var(--muted); font-size:15px; }
+  .card .i { font-size:24px; margin-bottom:8px; }
+  h2 { font-size:26px; margin:46px 0 14px; }
+  ol { color:var(--muted); padding-left:22px; } ol li { margin:6px 0; } ol b { color:var(--text); }
+  .faq details { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:14px 18px; margin:10px 0; }
+  .faq summary { cursor:pointer; font-weight:600; }
+  .faq p { color:var(--muted); margin:10px 0 0; }
+  footer { color:var(--muted); font-size:13px; padding:40px 0 30px; border-top:1px solid var(--line); margin-top:50px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header><img src="icon.png" alt=""><b>ChestTracker</b><span class="lang" id="langBtn">Italiano</span></header>
+
+  <section class="hero">
+    <h1 data-t="h1">Every chest counted.<br><span>Your real treasure odds.</span></h1>
+    <p data-t="sub">ChestTracker reads your match replays and counts every chest you open or destroy, then shows your exact odds for every treasure and your chances in the next match.</p>
+    <a class="buy" id="buyBtn" href="#" data-t="buy">Buy ChestTracker</a>
+    <div class="price" data-t="price">One-time payment · 1 PC · free updates</div>
+  </section>
+
+  <div class="grid">
+    <div class="card"><div class="i">📦</div><h3 data-t="f1t">Every chest</h3><p data-t="f1">Normal, rare, sprite, buried: opened or destroyed, all counted automatically after each match.</p></div>
+    <div class="card"><div class="i">🎯</div><h3 data-t="f2t">Real odds</h3><p data-t="f2">Exact probability for every reward, with Treasure Hour boosts and rewards you already own taken out.</p></div>
+    <div class="card"><div class="i">🎮</div><h3 data-t="f3t">In-game overlay</h3><p data-t="f3">A small card under the minimap with your next-match forecast and end-of-match stats.</p></div>
+    <div class="card"><div class="i">🗓️</div><h3 data-t="f4t">Weekly rewards</h3><p data-t="f4">This week's rewards with pictures, updated by itself every week.</p></div>
+    <div class="card"><div class="i">🪶</div><h3 data-t="f5t">Light</h3><p data-t="f5">Starts with the game, closes with it. Low memory and CPU use.</p></div>
+    <div class="card"><div class="i">🛡️</div><h3 data-t="f6t">Safe</h3><p data-t="f6">It only reads replay files on your PC. It never touches the game, its memory or your Epic account.</p></div>
+  </div>
+
+  <h2 data-t="howT">How it works</h2>
+  <ol>
+    <li data-t="how1"><b>Buy</b>: you receive your licence key and the download link by email.</li>
+    <li data-t="how2"><b>Install</b> ChestTracker and enter your key: it is activated on that PC.</li>
+    <li data-t="how3"><b>Play</b> with replays on (Fortnite → Settings → Game → Replays). Updates install by themselves.</li>
+  </ol>
+
+  <h2 data-t="faqT">FAQ</h2>
+  <div class="faq">
+    <details><summary data-t="q1">Can I use it on another PC?</summary><p data-t="a1">One key works on one PC at a time. To move it, open Settings → Licence → Deactivate this PC, then activate it on the new PC.</p></details>
+    <details><summary data-t="q2">Does it show chests live during the match?</summary><p data-t="a2">No. The game unlocks the replay only when the match ends, so chests are counted about 2 seconds after the match.</p></details>
+    <details><summary data-t="q3">Can I get banned?</summary><p data-t="a3">ChestTracker only reads replay files that the game saves on your PC, the same files the in-game replay viewer uses. It does not read or change the game.</p></details>
+    <details><summary data-t="q4">Windows says "unknown app"</summary><p data-t="a4">That's normal for new apps from small developers: click "More info" → "Run anyway".</p></details>
+  </div>
+
+  <footer data-t="foot">ChestTracker by CDRas. Not affiliated with, endorsed or sponsored by Epic Games. Fortnite is a trademark of Epic Games, Inc. Replay engine: ChestCounter (MIT licence).</footer>
+</div>
+<script>
+  // Set once the store exists (Lemon Squeezy checkout link)
+  const BUY_URL = "";
+  const IT = {
+    h1:"Ogni forziere contato.<br><span>Le tue vere probabilità di tesoro.</span>",
+    sub:"ChestTracker legge i replay delle tue partite e conta ogni forziere che apri o distruggi, poi ti mostra le probabilità esatte di ogni tesoro e le tue chance nella prossima partita.",
+    buy:"Acquista ChestTracker", price:"Pagamento unico · 1 PC · aggiornamenti gratis",
+    f1t:"Ogni forziere", f1:"Normali, rari, sprite, sepolti: aperti o distrutti, contati da soli dopo ogni partita.",
+    f2t:"Probabilità reali", f2:"Probabilità esatta per ogni premio, con i boost delle Treasure Hour e senza i premi che hai già.",
+    f3t:"Overlay in gioco", f3:"Una piccola scheda sotto la minimappa con la previsione della prossima partita e le statistiche di fine partita.",
+    f4t:"Premi della settimana", f4:"I premi della settimana con le foto, aggiornati da soli ogni settimana.",
+    f5t:"Leggero", f5:"Si apre con il gioco e si chiude con lui. Usa poca memoria e CPU.",
+    f6t:"Sicuro", f6:"Legge solo i file replay sul tuo PC. Non tocca mai il gioco, la sua memoria o il tuo account Epic.",
+    howT:"Come funziona",
+    how1:"<b>Acquista</b>: ricevi via email la chiave di licenza e il link per scaricarlo.",
+    how2:"<b>Installa</b> ChestTracker e inserisci la chiave: viene attivato su quel PC.",
+    how3:"<b>Gioca</b> con i replay attivi (Fortnite → Impostazioni → Gioco → Replay). Gli aggiornamenti si installano da soli.",
+    faqT:"Domande frequenti",
+    q1:"Posso usarlo su un altro PC?", a1:"Una chiave funziona su un PC alla volta. Per spostarla apri Impostazioni → Licenza → Disattiva questo PC, poi attivala sul PC nuovo.",
+    q2:"Mostra i forzieri in diretta durante la partita?", a2:"No. Il gioco sblocca il replay solo a fine partita, quindi i forzieri vengono contati circa 2 secondi dopo la fine.",
+    q3:"Rischio il ban?", a3:"ChestTracker legge solo i file replay che il gioco salva sul tuo PC, gli stessi della funzione Replay del gioco. Non legge e non modifica il gioco.",
+    q4:"Windows dice \"app sconosciuta\"", a4:"È normale per le app nuove di piccoli sviluppatori: clicca \"Ulteriori informazioni\" → \"Esegui comunque\".",
+    foot:"ChestTracker di CDRas. Non affiliato, approvato o sponsorizzato da Epic Games. Fortnite è un marchio di Epic Games, Inc. Motore replay: ChestCounter (licenza MIT)."
+  };
+  const EN = {}; document.querySelectorAll("[data-t]").forEach(e => EN[e.dataset.t] = e.innerHTML);
+  let it = false;
+  function setLang(v){
+    it = v; document.documentElement.lang = it ? "it" : "en";
+    document.querySelectorAll("[data-t]").forEach(e => e.innerHTML = (it ? IT : EN)[e.dataset.t] || EN[e.dataset.t]);
+    document.getElementById("langBtn").textContent = it ? "English" : "Italiano";
+  }
+  document.getElementById("langBtn").onclick = () => setLang(!it);
+  setLang((navigator.language || "").toLowerCase().startsWith("it"));
+  const b = document.getElementById("buyBtn");
+  if (BUY_URL) b.href = BUY_URL; else b.setAttribute("aria-disabled", "true");
+</script>
+</body>
+</html>
