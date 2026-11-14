@@ -1,6 +1,6 @@
 {
-    "version":  "2.4.0",
-    "url":  "https://cristldarass.github.io/chesttracker/update/ChestTracker.exe",
-    "sha256":  "4efff6f7345febf8555eb25245297cbe7d5c0a8ef8bddc34d647fb7415db5086",
-    "notes":  "Licence activation and online updates."
+    "version":  "2.5.0",
+    "url":  "https://chesttracker.github.io/chesttracker/update/ChestTracker.exe",
+    "sha256":  "bc685db9dabf43a8a83c77b417fa573da78ff685464db1c3aa418a0202d0301a",
+    "notes":  "Squad chests fixed. Overlay only over Fortnite."
 }
